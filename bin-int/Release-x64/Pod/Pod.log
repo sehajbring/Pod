@@ -1,0 +1,7 @@
+﻿  Test.cpp
+     Creating library C:\Dev\Pod\bin\Release-x64\Pod\Pod.lib and object C:\Dev\Pod\bin\Release-x64\Pod\Pod.exp
+  Generating code
+  Previous IPDB not found, fall back to full compilation.
+  All 4 functions were compiled because no usable IPDB/IOBJ from previous compilation was found.
+  Finished generating code
+  Pod.vcxproj -> C:\Dev\Pod\bin\Release-x64\Pod\Pod.dll
