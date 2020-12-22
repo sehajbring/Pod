@@ -7,9 +7,7 @@ namespace Pod {
 	std::shared_ptr<spdlog::logger> Log::s_ClientLogger;
 	
 	void Log::Init() {
-		/// <summary>
-		/// Set_pattern (time stamp, weather it's client or core, log message.
-		/// </summary>
+		// Set_pattern (time stamp, weather it's client or core, log message.
 		spdlog::set_pattern("%^[%T] %n: %v%$");
 		
 		s_CoreLogger = spdlog::stdout_color_mt("Pod");

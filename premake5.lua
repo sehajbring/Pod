@@ -27,6 +27,9 @@ project "Pod"
 
 	includedirs
 	{
+		"%{prj.name}/src",
+		"%{prj.name}/src/Pod",
+		"src/Pod",
 		"%{prj.name}/3rdparty/spdlog/include"
 	}
 

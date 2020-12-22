@@ -12,3 +12,5 @@
 #else
 	#error Pod is only avalible for Windows at the moment! 
 #endif // POD_PLATFORM_WINDOWS
+
+#define BIT(x) (1 << x) 

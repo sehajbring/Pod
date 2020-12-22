@@ -12,6 +12,7 @@ int main(int argc, char** argv) {
 	POD_CORE_WARN("Initalized!");
 	int a = 10;
 	POD_INFO("Hello! Var={0}", a);
+	POD_CORE_INFO("OHH NO!");
 	auto app = Pod::CreateApplication();
 	app->Run();
 	delete app;
