@@ -1,9 +1,7 @@
 #pragma once
+#include "podpch.h"
 
 #include "Pod/Core.h"
-#include <string>
-#include <functional>
-
 
 namespace Pod {
 

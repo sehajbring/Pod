@@ -11,6 +11,11 @@ workspace "Pod"
 
 outputdir = "%{cfg.buildcfg}-%{cfg.system}-%{cfg.architecture}"
 
+IncludeDir = {}
+IncludeDir["GLFW"] = "Pod/3rdparty/GLFW/include"
+
+include "Pod/3rdparty/GLFW"
+
 project "Pod"
 	location "Pod"
 	kind "SharedLib"
@@ -18,6 +23,9 @@ project "Pod"
 
 	targetdir ("bin/" .. outputdir .. "/%{prj.name}")
 	objdir ("bin-int/" .. outputdir .. "/%{prj.name}")
+
+	pchheader "podpch.h"
+	pchsource "Pod/src/podpch.cpp"
 
 	files
 	{
@@ -30,7 +38,13 @@ project "Pod"
 		"%{prj.name}/src",
 		"%{prj.name}/src/Pod",
 		"src/Pod",
-		"%{prj.name}/3rdparty/spdlog/include"
+		"%{prj.name}/3rdparty/spdlog/include",
+		"%{IncludeDir.GLFW}"
+	}
+
+	links{
+		"GLFW",
+		"opengl32.lib"
 	}
 
 	filter "system:windows"
