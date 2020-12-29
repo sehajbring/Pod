@@ -13,8 +13,10 @@ outputdir = "%{cfg.buildcfg}-%{cfg.system}-%{cfg.architecture}"
 
 IncludeDir = {}
 IncludeDir["GLFW"] = "Pod/3rdparty/GLFW/include"
+IncludeDir["Glad"] = "Pod/3rdparty/Glad/include"
 
 include "Pod/3rdparty/GLFW"
+include "Pod/3rdparty/Glad"
 
 project "Pod"
 	location "Pod"
@@ -39,11 +41,13 @@ project "Pod"
 		"%{prj.name}/src/Pod",
 		"src/Pod",
 		"%{prj.name}/3rdparty/spdlog/include",
-		"%{IncludeDir.GLFW}"
+		"%{IncludeDir.GLFW}",
+		"%{IncludeDir.Glad}"
 	}
 
 	links{
 		"GLFW",
+		"Glad",
 		"opengl32.lib"
 	}
 
@@ -55,7 +59,8 @@ project "Pod"
 		defines
 		{
 			"POD_PLATFORM_WINDOWS",
-			"POD_BUILD_DLL"
+			"POD_BUILD_DLL",
+			"GLFW_INCLUDE_NONE"
 		}
 
 		postbuildcommands
@@ -65,14 +70,17 @@ project "Pod"
 
 	filter "configurations:Debug"
 		defines "POD_DEBUG"
+		buildoptions "/MDd"
 		symbols "On"
 
 	filter "configurations:Release"
 		defines "POD_RELEASE"
+		buildoptions "/MD"
 		optimize "On"
 
 	filter "configurations:Dist"
 		defines "POD_DIST"
+		buildoptions "/MD"
         optimize "On"
     
 
@@ -113,13 +121,16 @@ project "Sandbox"
 
 	filter "configurations:Debug"
 		defines "POD_DEBUG"
+		buildoptions "/MDd"
 		symbols "On"
 
 	filter "configurations:Release"
 		defines "POD_RELEASE"
+		buildoptions "/MD"
 		optimize "On"
 
 	filter "configurations:Dist"
 		defines "POD_DIST"
+		buildoptions "/MD"
         optimize "On" 
     

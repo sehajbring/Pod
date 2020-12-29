@@ -2,7 +2,7 @@
 #include "Application.h"
 #include "Pod/Events/ApplicationEvent.h"
 #include "Pod/Log.h"
-#include <GLFW/glfw3.h>
+#include <glad/glad.h>
 
 namespace Pod {
 
@@ -17,10 +17,17 @@ namespace Pod {
 
 	}
 
+	void Application::PushLayer(Layer* layer) {
+		m_LayerStack.PushLayer(layer);
+	}
+
+	void Application::PushOverlay(Layer* layer) {
+		m_LayerStack.PushOverlay(layer);
+	}
+
 	void Application::OnEvent(Event& e) {
 		EventDispatcher dispatch(e);
 		dispatch.Dispatch<WindowCloseEvent>(BIND_EVENT_FN(OnWindowClose));
-		POD_CORE_TRACE("{0}", e);
 	}
 
 	bool Application::OnWindowClose(WindowCloseEvent& e)
@@ -36,6 +43,9 @@ namespace Pod {
 		while (m_Running) {
 			glClearColor(1, 0, 1, 1);
 			glClear(GL_COLOR_BUFFER_BIT);
+			for (Layer* layer : m_LayerStack) {
+				layer->OnUpdate();
+			}
 			m_Window->OnUpdate();
 		}
 	}
