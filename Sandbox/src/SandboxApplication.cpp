@@ -21,6 +21,7 @@ class Sandbox : public Pod::Application {
 public:
 	Sandbox() {
 		PushLayer(new CheckLayer());
+		PushLayer(new Pod::ImGuiLayer());
 	}
 
 	~Sandbox() {

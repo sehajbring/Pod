@@ -10,7 +10,7 @@ namespace Pod {
 		WindowClose, WindowResize, WindowFocus, WindowLostFocus,
 		WindowMoved, AppTick, AppUpdate, AppRender,
 		KeyPressed, KeyReleased, MouseButtonPressed,
-		MouseButtonReleased, MouseMoved, MouseScrolled
+		MouseButtonReleased, MouseMoved, MouseScrolled, KeyTyped
 	};
 
 	enum EventCategory {

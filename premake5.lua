@@ -14,9 +14,11 @@ outputdir = "%{cfg.buildcfg}-%{cfg.system}-%{cfg.architecture}"
 IncludeDir = {}
 IncludeDir["GLFW"] = "Pod/3rdparty/GLFW/include"
 IncludeDir["Glad"] = "Pod/3rdparty/Glad/include"
+IncludeDir["imgui"] = "Pod/3rdparty/imgui"
 
 include "Pod/3rdparty/GLFW"
 include "Pod/3rdparty/Glad"
+include "Pod/3rdparty/imgui"
 
 project "Pod"
 	location "Pod"
@@ -42,12 +44,14 @@ project "Pod"
 		"src/Pod",
 		"%{prj.name}/3rdparty/spdlog/include",
 		"%{IncludeDir.GLFW}",
-		"%{IncludeDir.Glad}"
+		"%{IncludeDir.Glad}",
+		"%{IncludeDir.imgui}"
 	}
 
 	links{
 		"GLFW",
 		"Glad",
+		"imgui",
 		"opengl32.lib"
 	}
 

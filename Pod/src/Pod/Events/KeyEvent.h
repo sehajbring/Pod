@@ -48,4 +48,16 @@ namespace Pod {
 
 		EVENT_CLASS_TYPE(KeyReleased)
 	};
+
+	class POD_API KeyTypedEvent : public KeyEvent {
+	public:
+		KeyTypedEvent(int keycode) : KeyEvent(keycode) {}
+		std::string ToString() const override {
+			std::stringstream strstream;
+			strstream << "KeyTypedEvent: " << m_KeyCode;
+			return strstream.str();
+		}
+
+		EVENT_CLASS_TYPE(KeyTyped)
+	};
 }
